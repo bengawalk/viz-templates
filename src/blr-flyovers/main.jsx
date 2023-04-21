@@ -169,7 +169,12 @@ class Container extends React.Component {
             min={1998}
             max={2023}
             value={inputYear}
-            onChange={e => this.setState({ inputYear: _.toNumber(e.target.value), autoplay: false })}
+            onChange={e => {
+              this.setState({ inputYear: _.toNumber(e.target.value) })
+              if(autoplay) {
+                this.toggleAutoplay();
+              }
+            }}
             className="timeline-slider"
           />
           <div className="timeline-label">
