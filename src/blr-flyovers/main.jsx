@@ -169,7 +169,7 @@ class Container extends React.Component {
             min={1998}
             max={2023}
             value={inputYear}
-            onChange={e => this.setState({ inputYear: _.toNumber(e.target.value) })}
+            onChange={e => this.setState({ inputYear: _.toNumber(e.target.value), autoplay: false })}
             className="timeline-slider"
           />
           <div className="timeline-label">
