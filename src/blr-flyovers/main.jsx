@@ -8,8 +8,6 @@ import { MAPBOX_TOKEN } from "../utils/constants";
 
 import flyoverData from "./data.json";
 
-// console.log(_.sortBy(_.uniq(_.map(flyoverData.features, f => f.properties["@relations"][0].reltags?.name))));
-
 const TIMELINE_DATA = {
   "Agara Flyover": 2010,
   "Ananda Rao Flyover": 2006,
@@ -23,7 +21,7 @@ const TIMELINE_DATA = {
   "Devarabeesanahalli Flyover": 2013,
   "Doddanekundi Flyover": 2018,
   "Domlur Flyover": 2006,
-  "Ganga Nagar Flyover": 0,
+  "Ganga Nagar Flyover": 0,                         // TODO
   "HSR Layout 14th Main Flyover": 2012,
   "Hebbal Flyover": 2003,
   "Hennur Flyover": 2018,
@@ -31,19 +29,19 @@ const TIMELINE_DATA = {
   "KEB Junction Flyover": 2017,
   "Kalyan Nagar Flyover": 2012,
   "Kanteerava Studio Flyover": 2015,
-  "Kengeri Flyover": 0,
+  "Kengeri Flyover": 0,                         // TODO
   "Kittur Rani Chenamma Circle Flyover": 2017,
   "Lingarajapuram Flyover": 2004,
-  "Mahadevapura Flyover": 0,
+  "Mahadevapura Flyover": 0,                         // TODO
   "Manjunath Nagar Flyover": 2018,
   "Mother Dairy Circle Flyover": 2020,
   "Nagawara Flyover": 2014,
   "Nayandahalli Flyover": 2012,
   "Rajajinagar 1st Block Flyover": 2016,
   "Rashtrotthana Junction Flyover": 2021,
-  "Richmond Circle Flyover": 0,
+  "Richmond Circle Flyover": 0,                         // TODO
   "Shivanagar Flyover": 2021,
-  "Silk Board Flyover": 0,
+  "Silk Board Flyover": 0,                         // TODO
   "Sumanahalli Flyover": 2010,
   "Tin Factory Flyover": 2002,
   "Vanivilas Flyover": 2005,
@@ -68,7 +66,6 @@ class Container extends React.Component {
       inputYear: 2023,
       lat: "12.9737",
       lng: "77.6081",
-      points : [],
       zoom : "10.39",
     };
     this.mapContainer = React.createRef();
@@ -140,8 +137,6 @@ class Container extends React.Component {
         lng: this.map.getCenter().lng.toFixed(4),
         lat: this.map.getCenter().lat.toFixed(4),
         zoom: this.map.getZoom().toFixed(2),
-      }, () => {
-        console.log(this.state);
       });
     });
   }
