@@ -49,10 +49,12 @@ const TIMELINE_DATA = {
   "Yeshwantpura Circle Flyover": 2009
 }
 
+// console.log(_.sortBy(_.uniq(_.map(flyoverData.features, f => f.properties["@relations"][0].reltags?.name))));
+
 const getCompletedFlyoversGeojson = (year) => {
   return {
     ...flyoverData,
-    features: _.filter(flyoverData.features, f => TIMELINE_DATA[f.properties["@relations"][0].reltags?.name] <= year)
+    // features: _.filter(flyoverData.features, f => TIMELINE_DATA[f.properties["@relations"][0].reltags?.name] <= year)
   };
 };
 
@@ -84,7 +86,7 @@ class Container extends React.Component {
     const { lng, lat, zoom } = this.state;
     const map = new mapboxgl.Map({
       container: this.mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/streets-v12",
       center: [lng, lat],
       zoom: zoom,
       minZoom: 10,
@@ -109,8 +111,8 @@ class Container extends React.Component {
         "line-cap": "round",
       },
       paint: {
-        "line-color": "#4264fb",
-        "line-width": 2.5,
+        "line-color": "red",
+        "line-width": 3,
       },
     });
   }
@@ -149,33 +151,36 @@ class Container extends React.Component {
   }
 
   render() {
-    const { autoplay, inputYear } = this.state;
+    // const { autoplay, inputYear } = this.state;
     return (
       <div id="flyover-viz-wrapper">
         <div id="flyover-viz-map" ref={this.mapContainer} />
-        <div className="timeline-wrapper">
-          <button className="timeline-play-toggle" onClick={this.toggleAutoplay}>
-            <span className="material-icons">
-              {autoplay ? "pause" : "play_arrow"}
-            </span>
-          </button>
-          <input
-            type="range"
-            min={1998}
-            max={2023}
-            value={inputYear}
-            onChange={e => {
-              this.setState({ inputYear: _.toNumber(e.target.value) })
-              if(autoplay) {
-                this.toggleAutoplay();
-              }
-            }}
-            className="timeline-slider"
-          />
-          <div className="timeline-label">
-            { inputYear }
-          </div>
-        </div>
+        <a href="https://en.wikipedia.org/wiki/List_of_flyovers_and_under-passes_in_Bengaluru" target="_blank" className="wiki-link">
+          Read more here
+        </a>
+        {/*<div className="timeline-wrapper">*/}
+        {/*  <button className="timeline-play-toggle" onClick={this.toggleAutoplay}>*/}
+        {/*    <span className="material-icons">*/}
+        {/*      {autoplay ? "pause" : "play_arrow"}*/}
+        {/*    </span>*/}
+        {/*  </button>*/}
+        {/*  <input*/}
+        {/*    type="range"*/}
+        {/*    min={1998}*/}
+        {/*    max={2023}*/}
+        {/*    value={inputYear}*/}
+        {/*    onChange={e => {*/}
+        {/*      this.setState({ inputYear: _.toNumber(e.target.value) })*/}
+        {/*      if(autoplay) {*/}
+        {/*        this.toggleAutoplay();*/}
+        {/*      }*/}
+        {/*    }}*/}
+        {/*    className="timeline-slider"*/}
+        {/*  />*/}
+        {/*  <div className="timeline-label">*/}
+        {/*    { inputYear }*/}
+        {/*  </div>*/}
+        {/*</div>*/}
       </div>
     );
   }

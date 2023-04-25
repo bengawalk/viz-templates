@@ -28,6 +28,23 @@
   }
 }
 
+.wiki-link {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  background-color: #ffffff;
+  display: inline-flex;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.7rem;
+  width: 126px;
+  margin-left: -63px;
+  padding: 4px 0;
+}
+
 .timeline-slider {
   flex-grow: 1;
 }
