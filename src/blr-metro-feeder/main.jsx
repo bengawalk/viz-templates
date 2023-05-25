@@ -1,7 +1,5 @@
 import * as React from "react";
 import _ from "lodash";
-import * as geolib from "geolib";
-import * as turf from "@turf/turf";
 import { createRoot } from "react-dom/client";
 import mapboxgl from "mapbox-gl";
 import '@material-design-icons/font/filled.css';
@@ -53,29 +51,6 @@ class Container extends React.Component {
   renderMapData = () => {
     const routeFeatures = _.filter(metroData.features, f => f.geometry.type === "LineString");
     const stopsFeatures = _.filter(metroData.features, f => f.geometry.type === "Point");
-    // const circleFeatures = [];
-    // stopsFeatures.forEach(s => {
-    //   const lineFeature = _.find(routeFeatures, r => _.some(r.geometry.coordinates, c => c[0] === s.geometry.coordinates[0] && c[1] === s.geometry.coordinates[1]));
-    //   const pointOfStation = _.findIndex(lineFeature.geometry.coordinates, c => c[0] === s.geometry.coordinates[0] && c[1] === s.geometry.coordinates[1]);
-    //   const pointBefore = lineFeature.geometry.coordinates[pointOfStation];
-    //   const pointAfter = lineFeature.geometry.coordinates[pointOfStation + 1];
-    //   const angle = geolib.getRhumbLineBearing(
-    //     { latitude: pointBefore[1], longitude: pointBefore[0] },
-    //     { latitude: pointAfter[1], longitude: pointAfter[0] }
-    //   );
-    //   const newBearing = (angle + 90) % 360;
-    //   const destinationPoint = geolib.computeDestinationPoint(lineFeature.geometry.coordinates[pointOfStation], CIRCLE_DIAMETER * 1000/2, newBearing);
-    //   const  circle = turf.circle([destinationPoint.longitude, destinationPoint.latitude], CIRCLE_DIAMETER/2, {steps: 36, units: 'kilometers'});
-    //   circleFeatures.push({
-    //     ...circle,
-    //     properties: {
-    //       ref: lineFeature.properties.ref
-    //     },
-    //   });
-    // });
-
-    console.log(circleFeatures);
-
 
     this.map.addSource("routes", {
       type: "geojson",
@@ -104,9 +79,9 @@ class Container extends React.Component {
           'match',
           ['get', 'ref'],
           'Purple',
-          '#5c0253',
+          '#01bfff',
           'Green',
-          '#488f31',
+          '#01bfff',
           '#ffffff'
         ],
         'fill-opacity': 0.2
